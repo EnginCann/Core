@@ -11,11 +11,11 @@ using System.Text;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    //NuGet
+    
     public class EfCarDal : EfEntityRepositoryBase<Car, ReCapContext>, ICarDal
 
     {
-        //IDisposable pattern implementation of C#
+     
         public List<CarDetailDto> GetCarDetails()
         {
             using (ReCapContext context=new ReCapContext())
@@ -27,9 +27,10 @@ namespace DataAccess.Concrete.EntityFramework
                              on c.ColorId equals r.Id
                              select new CarDetailDto
                              {
-                                 // CarName, BrandName, ColorName, DailyPrice
+
                                  CarName = c.Description,
                                  BrandName = b.Name,
+                                 ModelYear = c.ModelYear,
                                  ColorName = r.Name,
                                  DailyPrice = c.DailyPrice
                              };

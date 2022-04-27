@@ -62,8 +62,8 @@ namespace Business.Concrete
         [CacheAspect] //key value
         public IDataResult<List<Car>> GetAll()
         {
-            if (DateTime.Now.Hour == 17)
-                return new ErrorDataResult<List<Car>>(Messages.MaintenanceTime);
+            //      if (DateTime.Now.Hour == 17)
+           // return new ErrorDataResult<List<Car>>(Messages.MaintenanceTime);
 
             return new DataResult<List<Car>>(_carDal.GetAll(), true, Messages.ProductsListed);
         }
