@@ -18,7 +18,7 @@ namespace DataAccess.Concrete.EntityFramework
             {
                 var result = from r in context.Rentals
                              join c in context.Cars
-                             on r.CarId equals c.Id
+                             on r.CarId equals c.CarId
                              join b in context.Brands
                              on c.BrandId equals b.Id
                              join cus in context.Customers
@@ -31,7 +31,7 @@ namespace DataAccess.Concrete.EntityFramework
                                  CarName = c.Description,
                                  CustomerFirstName = u.FirstName,
                                  CustomerLastName = u.LastName,
-                                 CompanyName = cus.CompanyName
+                                
                              };
                 return result.ToList();
 

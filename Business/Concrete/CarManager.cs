@@ -22,6 +22,7 @@ namespace Business.Concrete
     {
         ICarDal _carDal;
         
+        
 
         public CarManager(ICarDal carDal)
         {
@@ -53,8 +54,11 @@ namespace Business.Concrete
 
         }
 
+      
+
         public IResult Delete(Car car)
         {
+            
             _carDal.Delete(car);
             return new Result(true, Messages.ProductDeleted);
         }
@@ -77,10 +81,13 @@ namespace Business.Concrete
         {
             return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.ColorId == id));
         }
+
+      
+
         [CacheAspect]
         public IDataResult<Car> GetById(int carId)
         {
-            return new SuccessDataResult<Car>(_carDal.Get(c => c.Id == carId));
+            return new SuccessDataResult<Car>(_carDal.Get(c => c.CarId == carId));
         }
 
         public IDataResult<List<CarDetailDto>> GetCarDetails()
